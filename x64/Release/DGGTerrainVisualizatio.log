@@ -1,0 +1,29 @@
+﻿生成启动时间为 2017/8/2 9:57:39。
+     1>项目“F:\Program\DGGTerrainVisualizatio\DGGTerrainVisualizatio\DGGTerrainVisualizatio.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\VS2013\VC\bin\x86_amd64\CL.exe /c /IE:\ExtendedQTMSystem /IE:\boost\include /I"E:\MongoDB\mongo-cxx-driver-r3.1.2\include" /IE:\OSG\include /IE:\OSG\osgEarth\include /IE:\Redis\hiredis\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt DGGTerrainVisualizatio.cpp
+         DGGTerrainVisualizatio.cpp
+     1>E:\MongoDB\mongo-cxx-driver-r3.1.2\include\mongo/bson/oid.h(72): warning C4351: 新增行为:  默认情况下初始化数组“mongo::OID::_data”的元素
+       Link:
+         E:\VS2013\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Program\DGGTerrainVisualizatio\x64\Release\DGGTerrainVisualizatio.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:E:\boost\lib /LIBPATH:E:\ExtendedQTMSystem\build /LIBPATH:"E:\MongoDB\mongo-cxx-driver-r3.1.2\lib" /LIBPATH:E:\OSG\lib /LIBPATH:E:\OSG\osgEarth\lib /LIBPATH:E:\Redis\hiredis\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\Program\DGGTerrainVisualizatio\x64\Release\DGGTerrainVisualizatio.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Program\DGGTerrainVisualizatio\x64\Release\DGGTerrainVisualizatio.lib" /MACHINE:X64 x64\Release\DGGTerrainVisualizatio.obj
+         正在生成代码
+         已完成代码的生成
+     1>hiredis.lib(hiredis.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“hiredis.lib(hiredis.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>hiredis.lib(sds.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“hiredis.lib(sds.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>hiredis.lib(net.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“hiredis.lib(net.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_FDAPI.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_FDAPI.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_Error.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_Error.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_fdapi_crt.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_fdapi_crt.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_Common.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_Common.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_variadicFunctor.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_variadicFunctor.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_RedisLog.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_RedisLog.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(win32_rfdmap.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(win32_rfdmap.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_ANSI.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_ANSI.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_EventLog.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_EventLog.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>Win32_Interop.lib(Win32_Time.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“Win32_Interop.lib(Win32_Time.obj)”或在“F:\Program\DGGTerrainVisualizatio\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+         DGGTerrainVisualizatio.vcxproj -> F:\Program\DGGTerrainVisualizatio\x64\Release\DGGTerrainVisualizatio.exe
+     1>已完成生成项目“F:\Program\DGGTerrainVisualizatio\DGGTerrainVisualizatio\DGGTerrainVisualizatio.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:19.06
