@@ -15,6 +15,8 @@
 #include <osgEarthUtil/EarthManipulator>
 #include <osgEarthUtil/AutoClipPlaneHandler>
 #include <osgEarthUtil/Sky>
+#include <osgEarthDrivers/feature_ogr/OGRFeatureOptions>
+#include <osgEarthDrivers/model_feature_geom/FeatureGeomModelOptions>
 
 #include <winsock2.h> 
 #include <mongo/client/dbclient.h> 
@@ -38,6 +40,8 @@
 #pragma comment(lib, "osgUtild.lib")
 #pragma comment(lib, "osgEarthd.lib")
 #pragma comment(lib, "osgEarthUtild.lib")
+#pragma comment(lib, "osgEarthFeaturesd.lib")
+#pragma comment(lib, "osgEarthSymbologyd.lib")
 #pragma comment(lib, "LibEQCommond.lib")
 #pragma comment(lib, "LibEQUtild.lib")
 #pragma comment(lib, "hiredisd.lib")
@@ -55,6 +59,8 @@
 #pragma comment(lib, "osgUtil.lib")
 #pragma comment(lib, "osgEarth.lib")
 #pragma comment(lib, "osgEarthUtil.lib")
+#pragma comment(lib, "osgEarthFeatures.lib")
+#pragma comment(lib, "osgEarthSymbology.lib")
 #pragma comment(lib, "LibEQCommon.lib")
 #pragma comment(lib, "LibEQUtil.lib")
 #pragma comment(lib, "hiredis.lib")
@@ -81,7 +87,7 @@ osg::Vec3 SpCoord2ECEF(const eqtm::SphericCoord& sc){
 	osgEarth::GeoPoint p(wgs84, sc.longitude, sc.latitude, osgEarth::ALTMODE_ABSOLUTE);
 	osgEarth::GeoPoint pc = p.transform(ecef);
 
-	return osg::Vec3(pc.x(), pc.y(), pc.z());
+	return osg::Vec3(0.99 * pc.x(), 0.99 * pc.y(), 0.99 * pc.z());
 }
 
 class NodeBuf : public std::basic_streambuf<char, std::char_traits<char>> {
@@ -396,11 +402,11 @@ int main(int argc, char* argv[])
 	skyNode->setLighting(false);
 	root->addChild(skyNode);
 	
-	//osgDB::Registry::instance()->setReadFileCallback(new TileReadFileCallBack());
-	osgDB::Registry::instance()->setReadFileCallback(new MongoDBCallBack());
+	osgDB::Registry::instance()->setReadFileCallback(new TileReadFileCallBack());
+	//osgDB::Registry::instance()->setReadFileCallback(new MongoDBCallBack());
 
 	for (unsigned int level = minLevel; level <= maxLevel; level++){
-		for (unsigned int dom_id = 0; dom_id < 10; dom_id++){
+		for (unsigned int dom_id = 1; dom_id < 2; dom_id++){
 			eqtm::EQCode areaCode;
 			areaCode.dt = 0x04 + static_cast<int>(dom_id << 4);
 			areaCode.len = level;
@@ -490,6 +496,37 @@ int main(int argc, char* argv[])
 		}
 	}
 #endif
+
+	root->addChild(osgDB::readNodeFile("0-0-0"));
+	root->addChild(osgDB::readNodeFile("0-2-0"));
+	root->addChild(osgDB::readNodeFile("0-3-0"));
+	root->addChild(osgDB::readNodeFile("0-4-0"));
+	root->addChild(osgDB::readNodeFile("0-5-0"));
+	root->addChild(osgDB::readNodeFile("0-6-0"));
+	root->addChild(osgDB::readNodeFile("0-7-0"));
+	root->addChild(osgDB::readNodeFile("0-8-0"));
+	root->addChild(osgDB::readNodeFile("0-9-0"));
+
+	osgEarth::Drivers::OGRFeatureOptions shplayerOpt;
+	shplayerOpt.url() = osgEarth::URI("E:\\OSG\\osgEarth\\data\\world.shp");
+	//设置矢量显示样式
+	osgEarth::Symbology::Style style;
+	style.setName("shpStyle");
+	osg::ref_ptr<osgEarth::LineSymbol> ls = style.getOrCreateSymbol<osgEarth::LineSymbol>();
+	ls->stroke()->color() = osgEarth::Color::Gray;
+	ls->stroke()->width() = 4.0f;
+	style.getOrCreate<osgEarth::AltitudeSymbol>()->clamping() = osgEarth::AltitudeSymbol::CLAMP_RELATIVE_TO_TERRAIN;
+	style.getOrCreate<osgEarth::AltitudeSymbol>()->technique() = osgEarth::AltitudeSymbol::TECHNIQUE_DRAPE;
+	style.getOrCreate<osgEarth::AltitudeSymbol>()->binding() = osgEarth::AltitudeSymbol::BINDING_VERTEX;
+	//新建矢量图层
+	osgEarth::Drivers::FeatureGeomModelOptions geomOptions;
+	geomOptions.featureOptions() = shplayerOpt;
+	geomOptions.styles() = new osgEarth::StyleSheet();
+	geomOptions.styles()->addStyle(style);
+	geomOptions.enableLighting() = false;
+	osg::ref_ptr<osgEarth::ModelLayer> shpLayer = new osgEarth::ModelLayer("shp", geomOptions);
+	map->addModelLayer(shpLayer);
+
 
 	viewer->setUpViewInWindow(50, 50, 1400, 800);
 
